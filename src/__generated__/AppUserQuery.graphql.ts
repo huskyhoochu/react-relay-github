@@ -31,6 +31,14 @@ query AppUserQuery(
 
 fragment User_user on User {
   name
+  avatarUrl
+  bioHTML
+  followers {
+    totalCount
+  }
+  following {
+    totalCount
+  }
 }
 */
 
@@ -46,6 +54,14 @@ const node: ConcreteRequest = (function () {
             "kind": "Variable",
             "name": "login",
             "variableName": "login"
+        } as any)
+    ], v2 = [
+        ({
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "totalCount",
+            "storageKey": null
         } as any)
     ];
     return {
@@ -100,6 +116,40 @@ const node: ConcreteRequest = (function () {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
+                            "name": "avatarUrl",
+                            "storageKey": null
+                        },
+                        {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "bioHTML",
+                            "storageKey": null
+                        },
+                        {
+                            "alias": null,
+                            "args": null,
+                            "concreteType": "FollowerConnection",
+                            "kind": "LinkedField",
+                            "name": "followers",
+                            "plural": false,
+                            "selections": (v2 /*: any*/),
+                            "storageKey": null
+                        },
+                        {
+                            "alias": null,
+                            "args": null,
+                            "concreteType": "FollowingConnection",
+                            "kind": "LinkedField",
+                            "name": "following",
+                            "plural": false,
+                            "selections": (v2 /*: any*/),
+                            "storageKey": null
+                        },
+                        {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
                             "name": "id",
                             "storageKey": null
                         }
@@ -109,12 +159,12 @@ const node: ConcreteRequest = (function () {
             ]
         },
         "params": {
-            "cacheID": "a3f50402f19ad6403371471b2f46e725",
+            "cacheID": "a41a04a7dec4f1fdb73622f5e18c628b",
             "id": null,
             "metadata": {},
             "name": "AppUserQuery",
             "operationKind": "query",
-            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n}\n"
+            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n}\n"
         }
     } as any;
 })();
