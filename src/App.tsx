@@ -1,11 +1,12 @@
 import React from 'react';
 import { QueryRenderer, graphql } from 'react-relay'
+import { AppUserQuery } from './__generated__/AppUserQuery.graphql';
 import environment from "./environment";
-import User from './User.tsx';
+import User from './User';
 
 const App = () => {
   return (
-    <QueryRenderer
+    <QueryRenderer<AppUserQuery>
       environment={environment}
       query={graphql`
       query AppUserQuery($login: String!) {

@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.scss';
 import { createFragmentContainer, graphql } from "react-relay";
+import { User_user } from "./__generated__/User_user.graphql";
 
 
-const User = (props) => {
+const User = (props: { user: User_user }) => {
   const { user } = props;
 
   return (
