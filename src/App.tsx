@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryRenderer, graphql } from 'react-relay'
 import environment from "./environment";
-import User from './User.js';
+import User from './User.tsx';
 
 const App = () => {
   return (
