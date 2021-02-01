@@ -1,0 +1,51 @@
+.loading {
+  @apply fixed w-screen h-screen;
+  @apply flex items-center justify-center;
+  @apply text-2xl;
+
+  &__indicator {
+    @apply relative;
+    @apply w-24 h-24;
+
+    :nth-child(1) {
+      @apply border-gray-300;
+    }
+
+    :nth-child(2) {
+      animation-delay: 0.3s;
+      @apply border-gray-300;
+    }
+
+    :nth-child(3) {
+      animation-delay: 0.6s;
+      @apply border-gray-300;
+    }
+
+    &__circle {
+      @apply absolute;
+      @apply rounded-full;
+      @apply top-0;
+      @apply w-24 h-24;
+      @apply border-4;
+      animation-name: rotate;
+      animation-duration: 2s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+    @apply opacity-0;
+  }
+}

@@ -6,6 +6,7 @@ import {
 } from './__generated__/AppUserQuery.graphql';
 import environment from './environment';
 import User from './User';
+import Loading from './Loading';
 
 const App: React.FC = () => {
   return (
@@ -34,9 +35,7 @@ const App: React.FC = () => {
 
         if (!props) {
           return (
-            <div className="fixed w-screen h-screen bg-blue-50 flex items-center justify-center">
-              <p>loading...</p>
-            </div>
+            <Loading />
           );
         }
 
