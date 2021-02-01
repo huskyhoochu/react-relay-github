@@ -3,25 +3,23 @@ import {
   Network,
   RecordSource,
   RequestParameters,
-  Store, Variables,
+  Store,
+  Variables,
 } from 'relay-runtime';
 import 'isomorphic-fetch';
 
-function fetchQuery(
-  operation: RequestParameters,
-  variables: Variables,
-) {
+function fetchQuery(operation: RequestParameters, variables: Variables) {
   return fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
-      'Authorization': `bearer ${process.env.GITHUB_TOKEN}`,
+      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       query: operation.text,
       variables,
     }),
-  }).then(response => {
+  }).then((response) => {
     return response.json();
   });
 }
