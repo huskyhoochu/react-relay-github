@@ -1,5 +1,7 @@
 import React from 'react';
 import { QueryRenderer, graphql } from 'react-relay';
+import { useParams } from 'react-router-dom';
+
 import {
   AppUserQuery,
   AppUserQueryResponse,
@@ -9,6 +11,9 @@ import User from './User';
 import Loading from './Loading';
 
 const App: React.FC = () => {
+  const { login } = useParams<{ login: string }>();
+  console.log(login);
+
   return (
     <QueryRenderer<AppUserQuery>
       environment={environment}
@@ -20,7 +25,7 @@ const App: React.FC = () => {
         }
       `}
       variables={{
-        login: process.env.LOGIN_NAME,
+        login,
       }}
       render={({
         error,

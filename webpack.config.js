@@ -12,7 +12,8 @@ module.exports = {
     shared: ['react', 'react-dom', 'react-relay', 'relay-runtime']
   },
   output: {
-    filename: './[name].[fullhash:8].js'
+    filename: './[name].[fullhash:8].js',
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.tsx', '.js', '.ts']
@@ -74,6 +75,7 @@ module.exports = {
 
   ],
   devServer: {
-    port: 3030
+    port: 3030,
+    historyApiFallback: true,
   }
 }

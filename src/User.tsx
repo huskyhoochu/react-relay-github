@@ -1,6 +1,8 @@
 import React from 'react';
-import './Index.scss';
 import { createFragmentContainer, graphql } from 'react-relay';
+import { Helmet } from 'react-helmet';
+
+import './Index.scss';
 import { User_user } from './__generated__/User_user.graphql';
 
 import './User.scss';
@@ -10,6 +12,9 @@ const User: React.FC<{ user: User_user }> = (props: { user: User_user }) => {
   console.log(user);
   return (
     <div className="user">
+      <Helmet>
+        <title>{`${user.login} | Github Profile`}</title>
+      </Helmet>
       <div className="user__body">
         <img className="user__body__avatar" src={user.avatarUrl as string} alt={user.name} />
         <p className="user__body__name">{user.login}</p>
