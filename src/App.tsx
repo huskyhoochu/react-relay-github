@@ -12,7 +12,6 @@ import Loading from './Loading';
 
 const App: React.FC = () => {
   const { login } = useParams<{ login: string }>();
-  console.log(login);
 
   return (
     <QueryRenderer<AppUserQuery>

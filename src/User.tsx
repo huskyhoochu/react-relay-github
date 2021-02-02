@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createFragmentContainer, graphql } from 'react-relay';
 import { Helmet } from 'react-helmet';
 
@@ -9,7 +9,21 @@ import './User.scss';
 
 const User: React.FC<{ user: User_user }> = (props: { user: User_user }) => {
   const { user } = props;
-  console.log(user);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if (isMounted) {
+      const faviconHTML = document.getElementById('favicon');
+      faviconHTML.setAttribute('href', user.avatarUrl as string);
+    }
+
+    return () => {
+      isMounted = false;
+    }
+  }, []);
+
+
   return (
     <div className="user">
       <Helmet>
