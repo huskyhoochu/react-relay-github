@@ -10,5 +10,6 @@ ReactDOM.render(
     <Switch>
       <Route path="/:login" children={<App />} />
     </Switch>
-  </Router>
-  , document.getElementById('root'));
+  </Router>,
+  document.getElementById('root'),
+);

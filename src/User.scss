@@ -1,7 +1,8 @@
 .user {
   @apply fixed w-screen h-screen;
   @apply flex items-center justify-center;
-  @apply text-gray-600;
+  @apply text-gray-600 dark:text-white;
+  @apply bg-white dark:bg-gray-800;
 
   &__body {
     @apply border rounded-2xl;

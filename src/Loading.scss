@@ -2,6 +2,7 @@
   @apply fixed w-screen h-screen;
   @apply flex items-center justify-center;
   @apply text-2xl;
+  @apply bg-white dark:bg-gray-800;
 
   &__indicator {
     @apply relative;
