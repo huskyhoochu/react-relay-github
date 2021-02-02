@@ -1,0 +1,11 @@
+.toggle-dark {
+  @apply fixed right-0 bottom-0;
+  @apply rounded-full w-12 h-12;
+  @apply shadow-md;
+  @apply bg-white dark:bg-gray-800;
+  @apply m-8;
+
+  @screen md {
+    @apply m-24;
+  }
+}
