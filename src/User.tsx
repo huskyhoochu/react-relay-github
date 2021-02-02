@@ -12,7 +12,11 @@ const User: React.FC<{ user: User_user }> = (props: { user: User_user }) => {
     <div className="user">
       <div className="user__body">
         <img className="user__body__avatar" src={user.avatarUrl as string} alt={user.name} />
-        <p className="user__body__name">{user.name}</p>
+        <p className="user__body__name">{user.login}</p>
+        <div className="user__body__section">
+          <p className="user__body__title">Name</p>
+          <p>{user.name}</p>
+        </div>
         <div className="user__body__section">
           <p className="user__body__title">Bio</p>
           <div className="user__body__bio" dangerouslySetInnerHTML={{ __html: user.bioHTML as string }}/>
@@ -58,6 +62,7 @@ export default createFragmentContainer(User, {
       following {
           totalCount
       }
+      login  
       websiteUrl  
       url
       repositories(last: 10, isFork: false, orderBy: { field: STARGAZERS, direction: ASC }) {

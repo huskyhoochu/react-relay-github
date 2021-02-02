@@ -16,6 +16,7 @@ export type User_user = {
     readonly following: {
         readonly totalCount: number;
     };
+    readonly login: string;
     readonly websiteUrl: unknown | null;
     readonly url: unknown;
     readonly repositories: {
@@ -111,6 +112,13 @@ const node: ReaderFragment = (function () {
                 "alias": null,
                 "args": null,
                 "kind": "ScalarField",
+                "name": "login",
+                "storageKey": null
+            },
+            {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
                 "name": "websiteUrl",
                 "storageKey": null
             },
@@ -177,5 +185,5 @@ const node: ReaderFragment = (function () {
         "abstractKey": null
     } as any;
 })();
-(node as any).hash = '10cee26287235bc44f2677f731255125';
+(node as any).hash = 'c3d55c3a54cec83f99c7dc42b8ee8cca';
 export default node;

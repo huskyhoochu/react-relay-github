@@ -6,12 +6,14 @@
   &__body {
     @apply border rounded-2xl;
     @apply p-4;
+    @apply max-w-xs;
 
     &__avatar {
       @apply w-16 h-16;
       @apply block;
       @apply mx-auto my-4;
       @apply opacity-0;
+      @apply rounded-full;
       animation-name: opacityMove;
       animation-timing-function: ease;
       animation-duration: 1s;

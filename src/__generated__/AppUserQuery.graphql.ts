@@ -41,6 +41,7 @@ fragment User_user on User {
   following {
     totalCount
   }
+  login
   websiteUrl
   url
   repositories(last: 10, isFork: false, orderBy: {field: STARGAZERS, direction: ASC}) {
@@ -183,6 +184,13 @@ const node: ConcreteRequest = (function () {
                             "alias": null,
                             "args": null,
                             "kind": "ScalarField",
+                            "name": "login",
+                            "storageKey": null
+                        },
+                        {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
                             "name": "websiteUrl",
                             "storageKey": null
                         },
@@ -252,12 +260,12 @@ const node: ConcreteRequest = (function () {
             ]
         },
         "params": {
-            "cacheID": "d66d7aaa23a116b5fdbcbf7906c7944b",
+            "cacheID": "9360189e9ea89cc042f6f7374774b109",
             "id": null,
             "metadata": {},
             "name": "AppUserQuery",
             "operationKind": "query",
-            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  websiteUrl\n  url\n  repositories(last: 10, isFork: false, orderBy: {field: STARGAZERS, direction: ASC}) {\n    totalCount\n    nodes {\n      name\n      stargazerCount\n      createdAt\n      id\n    }\n  }\n}\n"
+            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  login\n  websiteUrl\n  url\n  repositories(last: 10, isFork: false, orderBy: {field: STARGAZERS, direction: ASC}) {\n    totalCount\n    nodes {\n      name\n      stargazerCount\n      createdAt\n      id\n    }\n  }\n}\n"
         }
     } as any;
 })();
