@@ -11,6 +11,16 @@
     "prettier": "prettier --write",
     "eslint": "eslint --fix"
   },
+  "lint-staged": {
+    "./src/**/*.(ts|tsx|scss)": [
+      "yarn prettier"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-async-to-generator": "^7.12.1",
@@ -35,6 +45,8 @@
     "graphql": "^15.5.0",
     "html-loader": "^1.3.2",
     "html-webpack-plugin": "^4.5.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
     "mini-css-extract-plugin": "^1.3.5",
     "node-sass": "^5.0.0",
     "pm2": "^4.5.4",
