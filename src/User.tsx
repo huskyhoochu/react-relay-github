@@ -57,6 +57,7 @@ export default createFragmentContainer(User, {
         nodes {
           id
           name
+          descriptionHTML
           stargazerCount
           createdAt
         }

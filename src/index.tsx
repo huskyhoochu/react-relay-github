@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import App from './App';
+import 'animate.css/animate.css';
 
+import App from './App';
 import './Index.scss';
 
 ReactDOM.render(

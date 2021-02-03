@@ -67,6 +67,14 @@
 
     &__name {
       @apply flex items-center justify-between;
+
+      .name {
+        @apply font-bold;
+      }
+    }
+
+    &__description {
+      @apply text-sm;
     }
   }
 }

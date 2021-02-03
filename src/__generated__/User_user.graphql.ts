@@ -24,6 +24,7 @@ export type User_user = {
         readonly nodes: ReadonlyArray<{
             readonly id: string;
             readonly name: string;
+            readonly descriptionHTML: unknown;
             readonly stargazerCount: number;
             readonly createdAt: unknown;
         } | null> | null;
@@ -178,6 +179,13 @@ const node: ReaderFragment = (function () {
                                 "alias": null,
                                 "args": null,
                                 "kind": "ScalarField",
+                                "name": "descriptionHTML",
+                                "storageKey": null
+                            },
+                            {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
                                 "name": "stargazerCount",
                                 "storageKey": null
                             },
@@ -193,5 +201,5 @@ const node: ReaderFragment = (function () {
         "abstractKey": null
     } as any;
 })();
-(node as any).hash = 'a8ff7f0634645a2e4404680c6790a67f';
+(node as any).hash = '76541f7e1e9c1fb965cc057008193548';
 export default node;
