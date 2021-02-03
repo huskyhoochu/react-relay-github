@@ -9,6 +9,7 @@ import {
 import environment from './environment';
 import User from './User';
 import Loading from './Loading';
+import Error from './Error';
 
 const App: React.FC = () => {
   const { login } = useParams<{ login: string }>();
@@ -43,7 +44,7 @@ const App: React.FC = () => {
         props: AppUserQueryResponse;
       }) => {
         if (error) {
-          return <div>Error!</div>;
+          return <Error message={error.message} />;
         }
 
         if (!props) {

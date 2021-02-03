@@ -1,0 +1,10 @@
+.error {
+  @apply w-screen h-screen;
+  @apply p-4;
+  @apply text-gray-600 dark:text-white;
+  @apply bg-white dark:bg-gray-800;
+
+  &__message {
+    @apply text-sm;
+  }
+}
