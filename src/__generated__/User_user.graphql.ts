@@ -22,6 +22,7 @@ export type User_user = {
     readonly repositories: {
         readonly totalCount: number;
         readonly nodes: ReadonlyArray<{
+            readonly id: string;
             readonly name: string;
             readonly stargazerCount: number;
             readonly createdAt: unknown;
@@ -134,19 +135,19 @@ const node: ReaderFragment = (function () {
                 "args": [
                     {
                         "kind": "Literal",
+                        "name": "first",
+                        "value": 6
+                    },
+                    {
+                        "kind": "Literal",
                         "name": "isFork",
                         "value": false
                     },
                     {
                         "kind": "Literal",
-                        "name": "last",
-                        "value": 10
-                    },
-                    {
-                        "kind": "Literal",
                         "name": "orderBy",
                         "value": {
-                            "direction": "ASC",
+                            "direction": "DESC",
                             "field": "STARGAZERS"
                         }
                     }
@@ -165,6 +166,13 @@ const node: ReaderFragment = (function () {
                         "name": "nodes",
                         "plural": true,
                         "selections": [
+                            {
+                                "alias": null,
+                                "args": null,
+                                "kind": "ScalarField",
+                                "name": "id",
+                                "storageKey": null
+                            },
                             (v0 /*: any*/),
                             {
                                 "alias": null,
@@ -178,12 +186,12 @@ const node: ReaderFragment = (function () {
                         "storageKey": null
                     }
                 ],
-                "storageKey": "repositories(isFork:false,last:10,orderBy:{\"direction\":\"ASC\",\"field\":\"STARGAZERS\"})"
+                "storageKey": "repositories(first:6,isFork:false,orderBy:{\"direction\":\"DESC\",\"field\":\"STARGAZERS\"})"
             }
         ],
         "type": "User",
         "abstractKey": null
     } as any;
 })();
-(node as any).hash = 'c3d55c3a54cec83f99c7dc42b8ee8cca';
+(node as any).hash = 'a8ff7f0634645a2e4404680c6790a67f';
 export default node;

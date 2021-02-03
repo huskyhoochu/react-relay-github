@@ -6,6 +6,7 @@ import { User_user } from './__generated__/User_user.graphql';
 import './User.scss';
 import ToggleDark from './ToggleDark';
 import Profile from './profile';
+import Repo from './Repo';
 
 const User: React.FC<{
   user: User_user;
@@ -24,6 +25,7 @@ const User: React.FC<{
         <title>{`${user.login} | Github Profile`}</title>
       </Helmet>
       <Profile user={user} />
+      <Repo user={user} />
       <ToggleDark theme={theme} setTheme={setTheme} />
     </div>
   );
@@ -47,12 +49,13 @@ export default createFragmentContainer(User, {
       websiteUrl
       url
       repositories(
-        last: 10
+        first: 6
         isFork: false
-        orderBy: { field: STARGAZERS, direction: ASC }
+        orderBy: { field: STARGAZERS, direction: DESC }
       ) {
         totalCount
         nodes {
+          id
           name
           stargazerCount
           createdAt

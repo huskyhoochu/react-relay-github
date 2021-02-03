@@ -61,6 +61,14 @@
   &__bio {
     @apply text-sm;
   }
+
+  &__repo {
+    @apply my-2;
+
+    &__name {
+      @apply flex items-center justify-between;
+    }
+  }
 }
 
 @keyframes opacityMove {

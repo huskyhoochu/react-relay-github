@@ -44,13 +44,13 @@ fragment User_user on User {
   login
   websiteUrl
   url
-  repositories(last: 10, isFork: false, orderBy: {field: STARGAZERS, direction: ASC}) {
+  repositories(first: 6, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {
     totalCount
     nodes {
+      id
       name
       stargazerCount
       createdAt
-      id
     }
   }
 }
@@ -206,19 +206,19 @@ const node: ConcreteRequest = (function () {
                             "args": [
                                 {
                                     "kind": "Literal",
+                                    "name": "first",
+                                    "value": 6
+                                },
+                                {
+                                    "kind": "Literal",
                                     "name": "isFork",
                                     "value": false
                                 },
                                 {
                                     "kind": "Literal",
-                                    "name": "last",
-                                    "value": 10
-                                },
-                                {
-                                    "kind": "Literal",
                                     "name": "orderBy",
                                     "value": {
-                                        "direction": "ASC",
+                                        "direction": "DESC",
                                         "field": "STARGAZERS"
                                     }
                                 }
@@ -237,6 +237,7 @@ const node: ConcreteRequest = (function () {
                                     "name": "nodes",
                                     "plural": true,
                                     "selections": [
+                                        (v6 /*: any*/),
                                         (v2 /*: any*/),
                                         {
                                             "alias": null,
@@ -245,13 +246,12 @@ const node: ConcreteRequest = (function () {
                                             "name": "stargazerCount",
                                             "storageKey": null
                                         },
-                                        (v3 /*: any*/),
-                                        (v6 /*: any*/)
+                                        (v3 /*: any*/)
                                     ],
                                     "storageKey": null
                                 }
                             ],
-                            "storageKey": "repositories(isFork:false,last:10,orderBy:{\"direction\":\"ASC\",\"field\":\"STARGAZERS\"})"
+                            "storageKey": "repositories(first:6,isFork:false,orderBy:{\"direction\":\"DESC\",\"field\":\"STARGAZERS\"})"
                         },
                         (v6 /*: any*/)
                     ],
@@ -260,12 +260,12 @@ const node: ConcreteRequest = (function () {
             ]
         },
         "params": {
-            "cacheID": "9360189e9ea89cc042f6f7374774b109",
+            "cacheID": "b1f4e813f66fc057fe3cc75fb77d80bb",
             "id": null,
             "metadata": {},
             "name": "AppUserQuery",
             "operationKind": "query",
-            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  login\n  websiteUrl\n  url\n  repositories(last: 10, isFork: false, orderBy: {field: STARGAZERS, direction: ASC}) {\n    totalCount\n    nodes {\n      name\n      stargazerCount\n      createdAt\n      id\n    }\n  }\n}\n"
+            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  login\n  websiteUrl\n  url\n  repositories(first: 6, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {\n    totalCount\n    nodes {\n      id\n      name\n      stargazerCount\n      createdAt\n    }\n  }\n}\n"
         }
     } as any;
 })();

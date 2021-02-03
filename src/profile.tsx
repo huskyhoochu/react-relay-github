@@ -1,6 +1,7 @@
 import React from 'react';
-import { User_user } from './__generated__/User_user.graphql';
+import numeral from 'numeral';
 
+import { User_user } from './__generated__/User_user.graphql';
 import './Profile.scss';
 
 const Profile: React.FC<{ user: User_user }> = ({ user }) => {
@@ -45,12 +46,12 @@ const Profile: React.FC<{ user: User_user }> = ({ user }) => {
       </div>
       <div className="profile__section flex items-center justify-between">
         <div>
-          <p className="profile__title">팔로워</p>
-          <p>{user.followers.totalCount}명</p>
+          <p className="profile__title">Followers</p>
+          <p>{numeral(user.followers.totalCount).format()}</p>
         </div>
         <div>
-          <p className="profile__title">팔로잉</p>
-          <p>{user.following.totalCount}명</p>
+          <p className="profile__title">Following</p>
+          <p>{numeral(user.following.totalCount).format()}</p>
         </div>
       </div>
     </div>
