@@ -1,7 +1,11 @@
 .profile {
   @apply border rounded-2xl;
-  @apply p-4;
-  @apply max-w-xs;
+  @apply p-4 m-4;
+
+  @screen md {
+    @apply mx-auto;
+    @apply max-w-xs;
+  }
 
   &__avatar {
     @apply w-16 h-16;
