@@ -60,6 +60,7 @@ export default createFragmentContainer(User, {
           descriptionHTML
           stargazerCount
           createdAt
+          url
         }
       }
     }

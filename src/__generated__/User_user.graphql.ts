@@ -27,6 +27,7 @@ export type User_user = {
             readonly descriptionHTML: unknown;
             readonly stargazerCount: number;
             readonly createdAt: unknown;
+            readonly url: unknown;
         } | null> | null;
     };
     readonly " $refType": "User_user";
@@ -60,7 +61,13 @@ const node: ReaderFragment = (function () {
         "storageKey": null
     } as any), v3 = [
         (v2 /*: any*/)
-    ];
+    ], v4 = ({
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "url",
+        "storageKey": null
+    } as any);
     return {
         "argumentDefinitions": [],
         "kind": "Fragment",
@@ -124,13 +131,7 @@ const node: ReaderFragment = (function () {
                 "name": "websiteUrl",
                 "storageKey": null
             },
-            {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "url",
-                "storageKey": null
-            },
+            (v4 /*: any*/),
             {
                 "alias": null,
                 "args": [
@@ -189,7 +190,8 @@ const node: ReaderFragment = (function () {
                                 "name": "stargazerCount",
                                 "storageKey": null
                             },
-                            (v1 /*: any*/)
+                            (v1 /*: any*/),
+                            (v4 /*: any*/)
                         ],
                         "storageKey": null
                     }
@@ -201,5 +203,5 @@ const node: ReaderFragment = (function () {
         "abstractKey": null
     } as any;
 })();
-(node as any).hash = '76541f7e1e9c1fb965cc057008193548';
+(node as any).hash = '78c15ce3041eac36bd5f298acf8b20c7';
 export default node;

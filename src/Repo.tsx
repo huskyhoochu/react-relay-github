@@ -27,25 +27,33 @@ const Repo: React.FC<{ user: User_user }> = ({ user }) => {
             readonly descriptionHTML: unknown;
             readonly stargazerCount: number;
             readonly createdAt: unknown;
+            readonly url: unknown;
           }) => (
-            <div key={item.id} className="profile__repo">
-              <div className="profile__repo__name">
-                <span className="name">{item.name}</span>
-                <span onMouseEnter={addClass} onMouseLeave={removeClass}>
-                  <FontAwesomeIcon icon={faStar} />
-                  &nbsp;{item.stargazerCount}
-                </span>
+            <a
+              key={item.id}
+              href={item.url as string}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="profile__repo">
+                <div className="profile__repo__name">
+                  <span className="name">{item.name}</span>
+                  <span onMouseEnter={addClass} onMouseLeave={removeClass}>
+                    <FontAwesomeIcon icon={faStar} />
+                    &nbsp;{item.stargazerCount}
+                  </span>
+                </div>
+                <p className="profile__repo__description">
+                  {format(parseISO(item.createdAt as string), 'yyyy.MM.dd')}
+                </p>
+                <div
+                  className="profile__repo__description"
+                  dangerouslySetInnerHTML={{
+                    __html: item.descriptionHTML as string,
+                  }}
+                />
               </div>
-              <p className="profile__repo__description">
-                {format(parseISO(item.createdAt as string), 'yyyy.MM.dd')}
-              </p>
-              <div
-                className="profile__repo__description"
-                dangerouslySetInnerHTML={{
-                  __html: item.descriptionHTML as string,
-                }}
-              />
-            </div>
+            </a>
           ),
         )}
       </div>

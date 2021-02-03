@@ -52,6 +52,7 @@ fragment User_user on User {
       descriptionHTML
       stargazerCount
       createdAt
+      url
     }
   }
 }
@@ -91,6 +92,12 @@ const node: ConcreteRequest = (function () {
     } as any), v5 = [
         (v4 /*: any*/)
     ], v6 = ({
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "url",
+        "storageKey": null
+    } as any), v7 = ({
         "alias": null,
         "args": null,
         "kind": "ScalarField",
@@ -195,13 +202,7 @@ const node: ConcreteRequest = (function () {
                             "name": "websiteUrl",
                             "storageKey": null
                         },
-                        {
-                            "alias": null,
-                            "args": null,
-                            "kind": "ScalarField",
-                            "name": "url",
-                            "storageKey": null
-                        },
+                        (v6 /*: any*/),
                         {
                             "alias": null,
                             "args": [
@@ -238,7 +239,7 @@ const node: ConcreteRequest = (function () {
                                     "name": "nodes",
                                     "plural": true,
                                     "selections": [
-                                        (v6 /*: any*/),
+                                        (v7 /*: any*/),
                                         (v2 /*: any*/),
                                         {
                                             "alias": null,
@@ -254,26 +255,27 @@ const node: ConcreteRequest = (function () {
                                             "name": "stargazerCount",
                                             "storageKey": null
                                         },
-                                        (v3 /*: any*/)
+                                        (v3 /*: any*/),
+                                        (v6 /*: any*/)
                                     ],
                                     "storageKey": null
                                 }
                             ],
                             "storageKey": "repositories(first:6,isFork:false,orderBy:{\"direction\":\"DESC\",\"field\":\"STARGAZERS\"})"
                         },
-                        (v6 /*: any*/)
+                        (v7 /*: any*/)
                     ],
                     "storageKey": null
                 }
             ]
         },
         "params": {
-            "cacheID": "9d2c57ace89876be96c0e0ae06cce08a",
+            "cacheID": "2087a21fa66222ba495a96e15fbfd13f",
             "id": null,
             "metadata": {},
             "name": "AppUserQuery",
             "operationKind": "query",
-            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  login\n  websiteUrl\n  url\n  repositories(first: 6, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {\n    totalCount\n    nodes {\n      id\n      name\n      descriptionHTML\n      stargazerCount\n      createdAt\n    }\n  }\n}\n"
+            "text": "query AppUserQuery(\n  $login: String!\n) {\n  user(login: $login) {\n    ...User_user\n    id\n  }\n}\n\nfragment User_user on User {\n  name\n  avatarUrl\n  bioHTML\n  createdAt\n  email\n  followers {\n    totalCount\n  }\n  following {\n    totalCount\n  }\n  login\n  websiteUrl\n  url\n  repositories(first: 6, isFork: false, orderBy: {field: STARGAZERS, direction: DESC}) {\n    totalCount\n    nodes {\n      id\n      name\n      descriptionHTML\n      stargazerCount\n      createdAt\n      url\n    }\n  }\n}\n"
         }
     } as any;
 })();
