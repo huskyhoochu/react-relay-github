@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { QueryRenderer, graphql } from 'react-relay';
 import { useParams } from 'react-router-dom';
 
@@ -6,21 +6,18 @@ import {
   AppUserQuery,
   AppUserQueryResponse,
 } from './__generated__/AppUserQuery.graphql';
+import { ThemeContext } from './context/themeContext';
 import environment from './environment';
 import User from './User';
 import Loading from './Loading';
 import Error from './Error';
 
 const App: React.FC = () => {
+  const { useDarkModeProps } = useContext(ThemeContext);
   const { login } = useParams<{ login: string }>();
-  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   useEffect(() => {
-    const html = document.querySelector('html');
-    if (localStorage.getItem('theme') === 'dark') {
-      html.classList.add('dark');
-      setTheme('dark');
-    }
+    useDarkModeProps.initTheme();
   }, []);
 
   return (
@@ -51,7 +48,7 @@ const App: React.FC = () => {
           return <Loading />;
         }
 
-        return <User user={props.user} theme={theme} setTheme={setTheme} />;
+        return <User user={props.user} />;
       }}
     />
   );

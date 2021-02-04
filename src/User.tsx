@@ -10,9 +10,7 @@ import Repo from './Repo';
 
 const User: React.FC<{
   user: User_user;
-  theme: 'dark' | 'light';
-  setTheme: React.Dispatch<React.SetStateAction<'dark' | 'light'>>;
-}> = ({ user, theme, setTheme }) => {
+}> = ({ user }) => {
   return (
     <div className="user">
       <Helmet>
@@ -26,7 +24,7 @@ const User: React.FC<{
       </Helmet>
       <Profile user={user} />
       <Repo user={user} />
-      <ToggleDark theme={theme} setTheme={setTheme} />
+      <ToggleDark />
     </div>
   );
 };

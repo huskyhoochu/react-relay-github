@@ -1,29 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 import './ToggleDark.scss';
+import { ThemeContext } from './context/themeContext';
 
-const ToggleDark: React.FC<{
-  theme: 'dark' | 'light';
-  setTheme: React.Dispatch<React.SetStateAction<'dark' | 'light'>>;
-}> = (props) => {
-  const onToggle = () => {
-    const html = document.querySelector('html');
-    if (localStorage.getItem('theme') === 'dark') {
-      html.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      props.setTheme('light');
-    } else {
-      html.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      props.setTheme('dark');
-    }
-  };
+const ToggleDark: React.FC = () => {
+  const { useDarkModeProps } = useContext(ThemeContext);
 
   return (
-    <button type="button" className="toggle-dark" onClick={onToggle}>
-      <FontAwesomeIcon icon={props.theme === 'dark' ? faSun : faMoon} />
+    <button
+      type="button"
+      className="toggle-dark"
+      onClick={useDarkModeProps.toggleTheme}
+    >
+      <FontAwesomeIcon
+        icon={useDarkModeProps.theme === 'dark' ? faSun : faMoon}
+      />
     </button>
   );
 };
