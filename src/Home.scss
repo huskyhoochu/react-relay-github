@@ -1,0 +1,39 @@
+.home {
+  @apply py-4 min-h-screen;
+  @apply text-gray-600 dark:text-white;
+  @apply bg-white dark:bg-gray-800;
+  @apply flex items-center justify-center;
+
+  .search-form {
+    @screen md {
+      @apply mx-auto;
+      @apply max-w-xs;
+    }
+
+    &__github {
+      @apply block;
+      @apply text-8xl;
+      @apply mx-auto my-4;
+    }
+
+    &__input {
+      @apply block;
+
+      input {
+        @apply w-full;
+        @apply border rounded;
+        @apply p-2 my-4;
+      }
+    }
+
+    &__submit {
+      @apply w-full py-2;
+      @apply bg-indigo-400 rounded;
+      @apply text-white;
+
+      &:hover {
+        @apply bg-indigo-500;
+      }
+    }
+  }
+}
