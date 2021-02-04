@@ -37,8 +37,20 @@ const useSearchForm = () => {
   };
 
   const handleChange = (e: React.BaseSyntheticEvent) => {
+    e.persist();
+
+    const keyword = e.currentTarget.value;
     setError('');
+    setUsername(keyword);
+    const handler = setTimeout(() => {
+      searchUser(keyword);
+      clearTimeout(handler);
+    }, 100);
+  };
+
+  const selectKeyword = (e: React.BaseSyntheticEvent) => {
     setUsername(e.currentTarget.value);
+    setSearchList(null);
   };
 
   const validate = () => {
@@ -63,6 +75,7 @@ const useSearchForm = () => {
     error,
     searchList,
     searchUser,
+    selectKeyword,
     handleChange,
     handleSubmit,
   };

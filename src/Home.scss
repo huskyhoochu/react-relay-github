@@ -45,6 +45,7 @@
       }
 
       &__item {
+        @apply block;
         @apply m-2;
       }
     }

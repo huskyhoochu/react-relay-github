@@ -15,15 +15,15 @@ const Home: React.FC = () => {
     useDarkModeProps.initTheme();
   }, []);
 
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      searchProps.searchUser(searchProps.username);
-    }, 100);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchProps.username]);
+  // useEffect(() => {
+  //   const handler = setTimeout(() => {
+  //     searchProps.searchUser(searchProps.username);
+  //   }, 100);
+  //
+  //   return () => {
+  //     clearTimeout(handler);
+  //   };
+  // }, [searchProps.username]);
 
   const colorKeyword = (keyword: string) => {
     return keyword
@@ -52,11 +52,6 @@ const Home: React.FC = () => {
             <p className="search-form__input__error">{searchProps.error}</p>
           </label>
           <div className="search-form__list">
-            {!searchProps.searchList && (
-              <div className="search-form__list__loading">
-                <p>loading...</p>
-              </div>
-            )}
             {searchProps.searchList &&
               Array.prototype.map.call(
                 searchProps.searchList.search.edges.slice(0),
@@ -66,13 +61,19 @@ const Home: React.FC = () => {
                     readonly login?: string;
                   } | null;
                 }) => (
-                  <div className="search-form__list__item" key={item.node.id}>
+                  <button
+                    type="button"
+                    value={item.node.login}
+                    onClick={searchProps.selectKeyword}
+                    className="search-form__list__item"
+                    key={item.node.id}
+                  >
                     <p
                       dangerouslySetInnerHTML={{
                         __html: colorKeyword(item.node.login) as string,
                       }}
                     />
-                  </div>
+                  </button>
                 ),
               )}
           </div>
