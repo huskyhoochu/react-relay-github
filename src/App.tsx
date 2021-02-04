@@ -48,6 +48,10 @@ const App: React.FC = () => {
           return <Loading />;
         }
 
+        if (!props.user) {
+          return <div>검색결과가 없습니다.</div>;
+        }
+
         return <User user={props.user} />;
       }}
     />
