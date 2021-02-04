@@ -18,11 +18,16 @@
 
     &__input {
       @apply block;
+      @apply my-4;
 
       input {
         @apply w-full;
         @apply border rounded;
-        @apply p-2 my-4;
+        @apply p-2;
+      }
+
+      &__error {
+        @apply text-sm text-red-400;
       }
     }
 
