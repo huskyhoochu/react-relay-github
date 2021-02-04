@@ -1,56 +1,68 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import { ThemeContext } from './context/themeContext';
 import ToggleDark from './ToggleDark';
+import useSearchForm from './hook/useSearchForm';
 import './Home.scss';
 
 const Home: React.FC = () => {
   const { useDarkModeProps } = useContext(ThemeContext);
-  const [username, setUsername] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const searchProps = useSearchForm();
 
   useEffect(() => {
     useDarkModeProps.initTheme();
   }, []);
 
-  const handleChange = (e: React.BaseSyntheticEvent) => {
-    setError('');
-    setUsername(e.currentTarget.value);
-  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      searchProps.searchUser(searchProps.username);
+    }, 100);
 
-  const validate = () => {
-    if (!username) {
-      setError('이름을 입력하세요');
-      return false;
-    }
-    return true;
-  };
-
-  const handleSubmit = (e: React.BaseSyntheticEvent) => {
-    e.preventDefault();
-
-    if (validate()) {
-      window.location.assign(`/${username}`);
-    }
-  };
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchProps.username]);
 
   return (
     <div className="home">
       <div className="search-form">
         <FontAwesomeIcon icon={faGithub} className="search-form__github" />
         <p>검색하려는 Github 유저를 입력하세요.</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={searchProps.handleSubmit}>
           <label htmlFor="username" className="search-form__input">
             <input
               id="username"
               type="text"
-              onChange={handleChange}
-              value={username}
+              onChange={searchProps.handleChange}
+              value={searchProps.username}
+              autoComplete="off"
+              autoCapitalize="off"
             />
-            <p className="search-form__input__error">{error}</p>
+            <p className="search-form__input__error">{searchProps.error}</p>
           </label>
+          <div>
+            {!searchProps.searchList && (
+              <div>
+                <p>loading...</p>
+              </div>
+            )}
+            {searchProps.searchList &&
+              Array.prototype.map.call(
+                searchProps.searchList.search.edges.slice(0),
+                (item: {
+                  readonly node: {
+                    readonly id?: string;
+                    readonly login?: string;
+                  } | null;
+                }) => (
+                  <div key={item.node.id}>
+                    <p>{item.node.login}</p>
+                  </div>
+                ),
+              )}
+          </div>
           <button type="submit" className="search-form__submit">
             검색하기
           </button>
