@@ -25,6 +25,15 @@ const Home: React.FC = () => {
     };
   }, [searchProps.username]);
 
+  const colorKeyword = (keyword: string) => {
+    return keyword
+      ? keyword.replace(
+          new RegExp(searchProps.username, 'gi'),
+          `<span class="text-red-400">${searchProps.username}</span>`,
+        )
+      : '';
+  };
+
   return (
     <div className="home">
       <div className="search-form">
@@ -42,9 +51,9 @@ const Home: React.FC = () => {
             />
             <p className="search-form__input__error">{searchProps.error}</p>
           </label>
-          <div>
+          <div className="search-form__list">
             {!searchProps.searchList && (
-              <div>
+              <div className="search-form__list__loading">
                 <p>loading...</p>
               </div>
             )}
@@ -57,8 +66,12 @@ const Home: React.FC = () => {
                     readonly login?: string;
                   } | null;
                 }) => (
-                  <div key={item.node.id}>
-                    <p>{item.node.login}</p>
+                  <div className="search-form__list__item" key={item.node.id}>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: colorKeyword(item.node.login) as string,
+                      }}
+                    />
                   </div>
                 ),
               )}

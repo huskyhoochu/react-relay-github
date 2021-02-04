@@ -51,6 +51,7 @@ const useSearchForm = () => {
 
   const handleSubmit = (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
+    setSearchList(null);
 
     if (validate()) {
       window.location.assign(`/${username}`);

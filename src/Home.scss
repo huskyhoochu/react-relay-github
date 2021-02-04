@@ -5,6 +5,8 @@
   @apply flex items-center justify-center;
 
   .search-form {
+    @apply relative;
+
     @screen md {
       @apply mx-auto;
       @apply max-w-xs;
@@ -29,6 +31,21 @@
 
       &__error {
         @apply text-sm text-red-400;
+      }
+    }
+
+    &__list {
+      @apply bg-white;
+      @apply text-gray-800 rounded;
+      @apply absolute left-0 right-0 top-0;
+      margin-top: 220px;
+
+      &__loading {
+        @apply m-2;
+      }
+
+      &__item {
+        @apply m-2;
       }
     }
 
