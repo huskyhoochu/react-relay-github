@@ -15,16 +15,6 @@ const Home: React.FC = () => {
     useDarkModeProps.initTheme();
   }, []);
 
-  // useEffect(() => {
-  //   const handler = setTimeout(() => {
-  //     searchProps.searchUser(searchProps.username);
-  //   }, 100);
-  //
-  //   return () => {
-  //     clearTimeout(handler);
-  //   };
-  // }, [searchProps.username]);
-
   const colorKeyword = (keyword: string) => {
     return keyword
       ? keyword.replace(
