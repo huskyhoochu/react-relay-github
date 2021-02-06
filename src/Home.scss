@@ -45,8 +45,13 @@
       }
 
       &__item {
-        @apply block;
-        @apply m-2;
+        @apply block w-full;
+        @apply px-2 py-1;
+        @apply text-left;
+
+        &:hover {
+          @apply bg-gray-200;
+        }
       }
     }
 
