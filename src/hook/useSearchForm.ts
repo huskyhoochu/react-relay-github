@@ -51,6 +51,7 @@ const useSearchForm = () => {
   const selectKeyword = (e: React.BaseSyntheticEvent) => {
     setUsername(e.currentTarget.value);
     setSearchList(null);
+    document.querySelector('input').focus();
   };
 
   const validate = () => {
