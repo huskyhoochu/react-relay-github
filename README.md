@@ -14,11 +14,12 @@ yarn build // 프로덕션 빌드
 yarn start // 프로덕션 실행
 
 yarn dev // 개발 환경
+
+yarn relay // relay 코드를 자동 생성하는 명령어
 ```
 
 ## .env
 
 ```
 GITHUB_TOKEN="자신의 personal access token (repo 및 email 권한 필요)"
-LOGIN_NAME="검색할 Github 로그인 이름"
 ```
