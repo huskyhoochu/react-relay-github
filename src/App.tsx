@@ -49,7 +49,7 @@ const App: React.FC = () => {
         }
 
         if (!props.user) {
-          return <div>검색결과가 없습니다.</div>;
+          return <Error message={'검색결과가 없습니다.'} />;
         }
 
         return <User user={props.user} />;

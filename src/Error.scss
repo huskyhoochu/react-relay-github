@@ -7,4 +7,12 @@
   &__message {
     @apply text-sm;
   }
+
+  &__link {
+    @apply text-sm;
+
+    &:hover {
+      @apply underline;
+    }
+  }
 }
