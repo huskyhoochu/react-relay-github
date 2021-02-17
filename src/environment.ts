@@ -10,6 +10,7 @@ import 'isomorphic-fetch';
 
 function fetchQuery(operation: RequestParameters, variables: Variables) {
   const TOKEN = process.env.GITHUB_TOKEN;
+  console.log(TOKEN);
   return fetch('https://api.github.com/graphql', {
     method: 'POST',
     headers: {
