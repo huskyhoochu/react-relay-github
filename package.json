@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production webpack --progress --color",
+    "build": "rm -rf dist && NODE_ENV=production webpack --progress --color && workbox generateSW workbox-config.js",
     "dev": "rm -rf dist && NODE_ENV=development webpack serve",
     "relay": "relay-compiler --src ./src --schema ./data/schema.docs.graphql --language typescript",
     "start": "pm2 serve ./dist 3030 --spa --no-daemon",
@@ -63,7 +63,8 @@
     "uglify-js": "^3.12.6",
     "webpack": "^5.19.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "workbox-cli": "^6.1.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
