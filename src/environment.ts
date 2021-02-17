@@ -7,8 +7,6 @@ import {
   Variables,
 } from 'relay-runtime';
 import 'isomorphic-fetch';
-import dotenv from 'dotenv';
-dotenv.config();
 
 function fetchQuery(operation: RequestParameters, variables: Variables) {
   const TOKEN = process.env.GITHUB_TOKEN;
