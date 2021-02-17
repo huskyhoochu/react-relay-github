@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production webpack --progress --color",
+    "build": "rm -rf dist && NODE_ENV=production webpack --progress --color && workbox generateSW workbox-config.js",
     "dev": "rm -rf dist && NODE_ENV=development webpack serve",
     "relay": "relay-compiler --src ./src --schema ./data/schema.docs.graphql --language typescript",
     "start": "pm2 serve ./dist 3030 --spa --no-daemon",
