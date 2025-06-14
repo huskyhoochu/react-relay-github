@@ -18,17 +18,20 @@ const Home: React.FC = () => {
   const colorKeyword = (keyword: string) => {
     return keyword
       ? keyword.replace(
-          new RegExp(searchProps.username, 'gi'),
-          `<span class="text-red-400">${searchProps.username}</span>`,
-        )
+        new RegExp(searchProps.username, 'gi'),
+        `<span class="text-red-400">${searchProps.username}</span>`,
+      )
       : '';
   };
+
+  const TOKEN = process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN;
 
   return (
     <div className="home">
       <div className="search-form">
         <FontAwesomeIcon icon={faGithub} className="search-form__github" />
         <p>검색하려는 Github 유저를 입력하세요.</p>
+        <p style={{ textAlign: 'center' }}>TOKEN: {TOKEN}</p>
         <form onSubmit={searchProps.handleSubmit}>
           <label htmlFor="username" className="search-form__input">
             <input

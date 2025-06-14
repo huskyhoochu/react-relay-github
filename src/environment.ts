@@ -9,8 +9,6 @@ import {
 import 'isomorphic-fetch';
 
 function fetchQuery(operation: RequestParameters, variables: Variables) {
-  alert(process.env);
-
   const TOKEN = process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN;
   return fetch('https://api.github.com/graphql', {
     method: 'POST',
