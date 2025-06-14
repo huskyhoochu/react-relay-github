@@ -10,10 +10,8 @@ import environment from '../environment';
 const useSearchForm = () => {
   const [username, setUsername] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const [
-    searchList,
-    setSearchList,
-  ] = useState<useSearchFormSearchUserQueryResponse>(undefined);
+  const [searchList, setSearchList] =
+    useState<useSearchFormSearchUserQueryResponse>(undefined);
 
   const query = graphql`
     query useSearchFormSearchUserQuery($login: String!) {

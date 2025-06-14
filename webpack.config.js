@@ -9,26 +9,26 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
     index: './src/index.tsx',
-    shared: ['react', 'react-dom', 'react-relay', 'relay-runtime']
+    shared: ['react', 'react-dom', 'react-relay', 'relay-runtime'],
   },
   output: {
     filename: './[name].[fullhash:8].js',
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.tsx', '.js', '.ts']
+    extensions: ['.tsx', '.js', '.ts'],
   },
   optimization: {
     minimize: isProd,
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all',
-        }
-      }
+        },
+      },
     },
     runtimeChunk: 'single',
     minimizer: [
@@ -37,49 +37,40 @@ module.exports = {
         // minify: (file) => {
         //   return require('uglify-js').minify(file, [])
         // }
-    }),
+      }),
     ],
   },
   module: {
     rules: [
       {
         test: /\.(js|ts|tsx)$/,
-        loader: "babel-loader"
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.scss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-          'postcss-loader',
-        ]
+        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
       },
       {
         test: /\.html$/i,
-        loader: "html-loader"
+        loader: 'html-loader',
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         loader: 'file-loader',
       },
-    ]
+    ],
   },
   plugins: [
-    new HtmlWebpackPlugin({template: "./public/index.html" }),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
     new MiniCssExtractPlugin(),
     new Dotenv(),
-
   ],
   devServer: {
     port: 3030,
     historyApiFallback: true,
-  }
-}
+  },
+};

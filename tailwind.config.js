@@ -1,15 +1,13 @@
 module.exports = {
-  purge: [
-    './src/**/*.tsx',
-  ],
+  purge: ['./src/**/*.tsx'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ['Raleway','Noto Sans KR']
-    }
+      sans: ['Raleway', 'Noto Sans KR'],
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
