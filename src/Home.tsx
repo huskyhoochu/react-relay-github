@@ -24,14 +24,11 @@ const Home: React.FC = () => {
       : '';
   };
 
-  const TOKEN = process.env.REACT_APP_GITHUB_ACCESS_TOKEN;
-
   return (
     <div className="home">
       <div className="search-form">
         <FontAwesomeIcon icon={faGithub} className="search-form__github" />
         <p>검색하려는 Github 유저를 입력하세요.</p>
-        <p style={{ textAlign: 'center' }}>TOKEN: {TOKEN}</p>
         <form onSubmit={searchProps.handleSubmit}>
           <label htmlFor="username" className="search-form__input">
             <input
