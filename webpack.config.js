@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -67,7 +68,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: './public/index.html' }),
     new MiniCssExtractPlugin(),
-    new Dotenv(),
+    // Dotenv 플러그인 설정 개선
+    new Dotenv({
+      systemvars: true, // 시스템 환경변수 사용 (Vercel 환경변수 포함)
+      safe: false, // .env.example 파일 체크 비활성화
+      silent: false, // 에러 출력 활성화
+    }),
+    // 환경변수 명시적 정의 (백업용)
+    new webpack.DefinePlugin({
+      'process.env.REACT_APP_GITHUB_ACCESS_TOKEN': JSON.stringify(process.env.REACT_APP_GITHUB_ACCESS_TOKEN),
+    }),
   ],
   devServer: {
     port: 3030,
