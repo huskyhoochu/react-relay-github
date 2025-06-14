@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       : '';
   };
 
-  const TOKEN = process.env.NEXT_PUBLIC_GITHUB_ACCESS_TOKEN;
+  const TOKEN = process.env.REACT_APP_GITHUB_ACCESS_TOKEN;
 
   return (
     <div className="home">
